@@ -108,7 +108,7 @@ section {
   box-shadow: var(--box-shadow-1);
 }
 .controls .control i {
-  font-size: 0.1rem;
+  font-size: 1.4rem;
   color: var(--color-grey-2);
   pointer-events: none;
 }
@@ -178,7 +178,7 @@ section {
 .header-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  height: 100vh;
+  min-height: 100vh;
 }
 .header-content .left-header {
   display: flex;
@@ -194,8 +194,8 @@ section {
   left: 0;
   top: 0;
   z-index: -1;
-  -webkit-clip-path: polygon(0 0, 80% 0, 95% 100%, 0% 100%);
-          clip-path: polygon(0 0, 80% 0, 95% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+          clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
 }
 .header-content .left-header .image {
   border-radius: var(--br-sm-2);
@@ -580,11 +580,12 @@ section {
   align-items: center;
   font-size: 1.3rem;
 }
-.contact-content-con .left-contact .contact-icon {
+.contact-content-con .left-contact .contact-icons {
   display: flex;
+  flex-direction: row;
   margin-top: 2rem;
 }
-.contact-content-con .left-contact .contact-icon a {
+.contact-content-con .left-contact .contact-icons a {
   display: flex;
   align-items: center;
   color: var(--color-white);
@@ -597,13 +598,13 @@ section {
   margin: 0 0.4rem;
   transition: all 0.4s ease-in-out;
 }
-.contact-content-con .left-contact .contact-icon a:hover {
+.contact-content-con .left-contact .contact-icons a:hover {
   background-color: var(--color-secondary);
 }
-.contact-content-con .left-contact .contact-icon a:hover i {
+.contact-content-con .left-contact .contact-icons a:hover i {
   color: var(--color-primary);
 }
-.contact-content-con .left-contact .contact-icon a i {
+.contact-content-con .left-contact .contact-icons a i {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -628,6 +629,64 @@ section {
   width: 100%;
   color: var(--color-white);
   resize: none;
+}
+
+.main-accordion {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.accordion {
+  width: 90%;
+  background-color: inherit;
+  padding: 2rem;
+  border-radius: 30px;
+}
+
+.accordion .accordion-title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.accordion .question {
+  font-size: 22px;
+  padding: 18px 0;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  position: relative;
+}
+
+.question::after {
+  content: "+";
+  position: absolute;
+  right: -5px;
+}
+
+.answer {
+  padding-top: 15px;
+  font-size: 22px;
+  line-height: 1.5;
+  width: 100%;
+  height: 0px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.content-container.active .answer {
+  height: 150px;
+}
+
+.content-container.active .question {
+  font-size: 18px;
+  transition: 0.5s;
+}
+
+.content-container.active .question::after {
+  content: "-";
+  font-size: 30px;
+  transition: 0.5s;
 }
 
 @media screen and (max-width: 600px) {
@@ -702,7 +761,7 @@ section {
 }
 @media screen and (max-width: 970px) {
   .section {
-    padding: 7rem 6rem;
+    padding: 6rem 6rem;
   }
   header {
     padding: 0;
@@ -717,7 +776,7 @@ section {
   }
   .header-content {
     grid-template-columns: 1fr;
-    padding-bottom: 6rem;
+    padding-bottom: 2rem;
   }
   .right-header {
     grid-row: 1;
@@ -727,7 +786,10 @@ section {
   .right-header .name {
     font-size: 2.5rem !important;
   }
-  .header-content .left-header .image {
+  .left-header {
+    width: 100%;
+  }
+  .left-header .image {
     margin: 0 auto;
     width: 90%;
     height: 100vh;
